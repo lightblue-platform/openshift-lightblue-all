@@ -29,6 +29,7 @@
             </snapshots>
         </repository>
     </repositories>
+
     <pluginRepositories>
         <!-- don't need this I think.
         <pluginRepository>
