@@ -11,6 +11,12 @@
             <id>Sonatype repository</id>
             <name>Sonatype's Maven repository</name>
             <url>http://oss.sonatype.org/content/groups/public</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
         <repository>
             <id>eap</id>
@@ -24,11 +30,13 @@
         </repository>
     </repositories>
     <pluginRepositories>
+        <!-- don't need this I think.
         <pluginRepository>
             <id>Sonatype repository</id>
             <name>Sonatype's Maven repository</name>
             <url>http://oss.sonatype.org/content/groups/public</url>
         </pluginRepository>
+        -->
         <pluginRepository>
             <id>eap</id>
             <url>http://maven.repository.redhat.com/techpreview/all</url>
