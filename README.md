@@ -1,3 +1,4 @@
-The OpenShift `jbosseap` cartridge documentation can be found at:
+lightblue-all
+=============
 
-https://github.com/openshift/origin-server/tree/master/cartridges/openshift-origin-cartridge-jbosseap/README.md
+Quickstart for deploying all applications and services together with local mongodb.

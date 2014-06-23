@@ -1,0 +1,36 @@
+{
+   "metadata" : {
+     "documentation" : [
+       "MongoDB makes a distinction between servers (a list) and ",
+       "server (a single address), even if servers contains a",
+       "single address. So, if servers field exists in this file,",
+       "then it assumes it is talking to a replica set, and will",
+       "want access to all the nodes. If instead server field ",
+       "exists, it only talks to that server.",
+       "WARNING: noCertValidation: this turns off all SSL certificate ",
+       "validations. It should be set to true only for development."
+     ],
+     "type" : "com.redhat.lightblue.mongo.config.MongoConfiguration",
+     "metadataDataStoreParser" : "com.redhat.lightblue.metadata.mongo.MongoDataStoreParser",
+     "ssl" : false,
+     "noCertValidation" : true,
+     "database" : "metadata",
+     "server" : 
+        { 
+           "host" : "localhost",
+           "port" : "27017"
+        }
+   },
+   "mongodata" : {
+     "type" : "com.redhat.lightblue.mongo.config.MongoConfiguration",
+     "metadataDataStoreParser" : "com.redhat.lightblue.metadata.mongo.MongoDataStoreParser",
+     "ssl" : false,
+     "noCertValidation" : true,
+     "database" : "data",
+     "server" : 
+        { 
+           "host" : "localhost",
+           "port" : "27017"
+        }
+   }
+}
