@@ -47,6 +47,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
+        <mongodb.host>localhost</mongodb.host>
+        <mongodb.port>27017</mongodb.port>
     </properties>
     <dependencies>
         <dependency>
@@ -136,6 +138,7 @@
                             <artifactId>rest-metadata</artifactId>
                             <excludes>
                                 <exclude>WEB-INF/jboss-web.xml</exclude>
+                                <exclude>WEB-INF/jboss-deployment-structure.xml</exclude>
                                 <exclude>WEB-INF/classes/com/redhat/lightblue/rest/metadata/RestApplication.class</exclude>
                                 <exclude>WEB-INF/classes/com/redhat/lightblue/rest/metadata/MetadataResource.class</exclude>
                             </excludes>
@@ -145,6 +148,7 @@
                             <artifactId>rest-crud</artifactId>
                             <excludes>
                                 <exclude>WEB-INF/jboss-web.xml</exclude>
+                                <exclude>WEB-INF/jboss-deployment-structure.xml</exclude>
                                 <exclude>WEB-INF/classes/com/redhat/lightblue/rest/crud/RestApplication.class</exclude>
                                 <exclude>WEB-INF/classes/com/redhat/lightblue/rest/crud/CrudResource.class</exclude>
                             </excludes>
@@ -191,6 +195,12 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
     <profiles>
         <profile>

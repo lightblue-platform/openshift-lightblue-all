@@ -17,8 +17,8 @@
      "database" : "metadata",
      "server" : 
         { 
-           "host" : "${mongodb.host:localhost}",
-           "port" : "${mongodb.port:27017}"
+           "host" : "${mongodb.host}",
+           "port" : "${mongodb.port}"
         }
    },
    "mongodata" : {
@@ -29,8 +29,8 @@
      "database" : "data",
      "server" : 
         { 
-           "host" : "${mongodb.host:localhost}",
-           "port" : "${mongodb.port:27017}"
+           "host" : "${mongodb.host}",
+           "port" : "${mongodb.port}"
         }
    }
 }
