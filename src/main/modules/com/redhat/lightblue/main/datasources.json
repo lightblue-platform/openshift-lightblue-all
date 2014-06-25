@@ -17,8 +17,8 @@
      "database" : "metadata",
      "server" : 
         { 
-           "host" : "${OPENSHIFT_MONGODB_DB_HOST}",
-           "port" : "${OPENSHIFT_MONGODB_DB_PORT}"
+           "host" : "${mongodb.host:localhost}",
+           "port" : "${mongodb.port:27017}"
         }
    },
    "mongodata" : {
@@ -29,8 +29,8 @@
      "database" : "data",
      "server" : 
         { 
-           "host" : "${OPENSHIFT_MONGODB_DB_HOST}",
-           "port" : "${OPENSHIFT_MONGODB_DB_PORT}"
+           "host" : "${mongodb.host:localhost}",
+           "port" : "${mongodb.port:27017}"
         }
    }
 }
