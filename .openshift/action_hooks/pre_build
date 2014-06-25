@@ -1,0 +1,3 @@
+#!/bin/sh
+
+eval `export MAVEN_ARG="clean package -Popenshift -DskipTests -Dmongodb.host=${OPENSHIFT_MONGODB_DB_HOST} -Dmongodb.port=${OPENSHIFT_MONGODB_DB_PORT} -Dhello=there"`
