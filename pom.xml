@@ -2,9 +2,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.redhat.lightblue</groupId>
-    <artifactId>all</artifactId>
+    <artifactId>lightblue-all</artifactId>
     <packaging>war</packaging>
-    <version>1.0</version>
+    <version>0.1-SNAPSHOT</version>
     <name>lightblue-all</name>
     <repositories>
         <repository>
@@ -31,13 +31,6 @@
     </repositories>
 
     <pluginRepositories>
-        <!-- don't need this I think.
-        <pluginRepository>
-            <id>Sonatype repository</id>
-            <name>Sonatype's Maven repository</name>
-            <url>http://oss.sonatype.org/content/groups/public</url>
-        </pluginRepository>
-        -->
         <pluginRepository>
             <id>eap</id>
             <url>http://maven.repository.redhat.com/techpreview/all</url>
@@ -50,6 +43,7 @@
         </pluginRepository>
     </pluginRepositories>
     <properties>
+        <rpm.install.basedir>/usr/share/jbossas/standalone/deployments</rpm.install.basedir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
@@ -82,6 +76,27 @@
             <groupId>com.redhat.lightblue.rest</groupId>
             <artifactId>rest-metadata</artifactId>
             <version>0.1-SNAPSHOT</version>
+            <classifier>classes</classifier>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.redhat.lightblue.rest</groupId>
+            <artifactId>rest-metadata</artifactId>
+            <version>0.1-SNAPSHOT</version>
+            <type>war</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.redhat.lightblue.rest</groupId>
+            <artifactId>rest-crud</artifactId>
+            <version>0.1-SNAPSHOT</version>
+            <classifier>classes</classifier>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.redhat.lightblue.rest</groupId>
+            <artifactId>rest-crud</artifactId>
+            <version>0.1-SNAPSHOT</version>
             <type>war</type>
             <scope>compile</scope>
         </dependency>
@@ -93,7 +108,6 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>lightblue-all</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -120,13 +134,60 @@
                         <overlay>
                             <groupId>com.redhat.lightblue.rest</groupId>
                             <artifactId>rest-metadata</artifactId>
-                            <!--
                             <excludes>
                                 <exclude>WEB-INF/jboss-web.xml</exclude>
+                                <exclude>WEB-INF/classes/com/redhat/lightblue/rest/metadata/RestApplication.class</exclude>
+                                <exclude>WEB-INF/classes/com/redhat/lightblue/rest/metadata/MetadataResource.class</exclude>
                             </excludes>
-                            -->
+                        </overlay>
+                        <overlay>
+                            <groupId>com.redhat.lightblue.rest</groupId>
+                            <artifactId>rest-crud</artifactId>
+                            <excludes>
+                                <exclude>WEB-INF/jboss-web.xml</exclude>
+                                <exclude>WEB-INF/classes/com/redhat/lightblue/rest/crud/RestApplication.class</exclude>
+                                <exclude>WEB-INF/classes/com/redhat/lightblue/rest/crud/CrudResource.class</exclude>
+                            </excludes>
                         </overlay>
                     </overlays>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rpm-maven-plugin</artifactId>
+                <version>2.1-alpha-3</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>attached-rpm</goal>
+                        </goals>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <copyright>Red Hat</copyright>
+                    <distribution>RHEL</distribution>
+                    <group>Lightblue Application</group>
+                    <packager>${user.name}</packager>
+                    <defaultFilemode>744</defaultFilemode>
+                    <defaultUsername>jboss</defaultUsername>
+                    <defaultGroupname>jboss</defaultGroupname>
+                    <!-- 
+                    <requires>
+                        <require>eap &gt;= 6.2</require>
+                    </requires>
+                    -->
+                    <mappings>
+                        <mapping>
+                            <directory>${rpm.install.basedir}</directory>
+                            <sources>
+                                <source>
+                                    <location>target/${project.artifactId}-${project.version}.${project.packaging}</location>
+                                </source>
+                            </sources>
+                        </mapping>
+                    </mappings>
                 </configuration>
             </plugin>
         </plugins>
@@ -170,11 +231,10 @@
                                 <overlay>
                                     <groupId>com.redhat.lightblue.rest</groupId>
                                     <artifactId>rest-metadata</artifactId>
-                                    <!--
-                                    <excludes>
-                                        <exclude>WEB-INF/jboss-web.xml</exclude>
-                                    </excludes>
-                                    -->
+                                </overlay>
+                                <overlay>
+                                    <groupId>com.redhat.lightblue.rest</groupId>
+                                    <artifactId>rest-crud</artifactId>
                                 </overlay>
                             </overlays>
                         </configuration>
