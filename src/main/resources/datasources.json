@@ -19,7 +19,6 @@
        "mechanism": "PLAIN_MECHANISM", 
        "userName" : "${mongodb.user}",
        "password": "${mongodb.pass}",
-       "source" : "admin"
      },
      "server" : 
         { 
@@ -37,7 +36,6 @@
        "mechanism": "PLAIN_MECHANISM", 
        "userName" : "${mongodb.user}",
        "password": "${mongodb.pass}",
-       "source" : "admin"
      },
      "server" : 
         { 
