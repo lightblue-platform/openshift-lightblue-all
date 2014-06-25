@@ -1,3 +1,4 @@
 #!/bin/sh
 
-MAVEN_OPTS="-Dmongodb.host=${OPENSHIFT_MONGODB_DB_HOST} -Dmongodb.port=${OPENSHIFT_MONGODB_DB_PORT}"
+#https://www.openshift.com/forums/openshift/altering-maven-build-parameters#comment-30889
+export MAVEN_OPTS="clean package -Popenshift -DskipTests -Dmongodb.host=${OPENSHIFT_MONGODB_DB_HOST} -Dmongodb.port=${OPENSHIFT_MONGODB_DB_PORT}"
