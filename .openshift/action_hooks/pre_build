@@ -3,6 +3,7 @@
 #https://www.openshift.com/forums/openshift/altering-maven-build-parameters#comment-30889
 #http://blog-judcon.rhcloud.com/?p=16
 export MAVEN_ARGS="clean package -Popenshift -DskipTests -Dmongodb.host=${OPENSHIFT_MONGODB_DB_HOST} -Dmongodb.port=${OPENSHIFT_MONGODB_DB_PORT}"
+export MAVEN_OPTS=$MAVEN_ARGS
 export MVN_CMD="mvn -e $MAVEN_ARGS"
 export MAVEN_CMD=$MVN_CMD
 
