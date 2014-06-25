@@ -136,6 +136,7 @@
                             <excludes>
                                 <exclude>WEB-INF/jboss-web.xml</exclude>
                                 <exclude>WEB-INF/classes/com/redhat/lightblue/rest/metadata/RestApplication.class</exclude>
+                                <exclude>WEB-INF/classes/com/redhat/lightblue/rest/metadata/MetadataResource.class</exclude>
                             </excludes>
                         </overlay>
                         <overlay>
@@ -144,6 +145,7 @@
                             <excludes>
                                 <exclude>WEB-INF/jboss-web.xml</exclude>
                                 <exclude>WEB-INF/classes/com/redhat/lightblue/rest/crud/RestApplication.class</exclude>
+                                <exclude>WEB-INF/classes/com/redhat/lightblue/rest/crud/CrudResource.class</exclude>
                             </excludes>
                         </overlay>
                     </overlays>
