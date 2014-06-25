@@ -195,13 +195,6 @@
     <profiles>
         <profile>
             <id>openshift</id>
-            <repositories>
-                <repository>
-                    <id>Sonatype repository</id>
-                    <name>Sonatype's Maven repository</name>
-                    <url>http://oss.sonatype.org/content/groups/public</url>
-                </repository>
-            </repositories>
             <build>
                 <finalName>lightblue-all</finalName>
                 <plugins>
