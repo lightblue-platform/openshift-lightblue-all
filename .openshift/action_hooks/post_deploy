@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo "Waiting for serivces to start:"
+for svc in "${OPENSHIFT_GEAR_DNS}/health" "${OPENSHIFT_GEAR_DNS}/health.jsp";
+do
+    echo -n ${svc}..
+    while (test 0 -eq `curl -s ${svc} | wc -c`); do echo -n "."; sleep 1; done
+    echo "online"
+done
+echo "All services are started."
