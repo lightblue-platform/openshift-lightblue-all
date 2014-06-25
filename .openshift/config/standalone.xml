@@ -77,6 +77,9 @@
 			<logger category="jacorb.config">
 				<level name="ERROR" />
 			</logger>
+			<logger category="com.redhat">
+				<level name="DEBUG" />
+			</logger>
 			<root-logger>
 				<level name="DEBUG" />
 				<handlers>
