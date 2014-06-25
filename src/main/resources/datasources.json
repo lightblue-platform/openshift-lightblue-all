@@ -15,6 +15,12 @@
      "ssl" : false,
      "noCertValidation" : true,
      "database" : "metadata",
+     "credentials" : {
+       "mechanism": "PLAIN_MECHANISM", 
+       "userName" : "${mongodb.user}",
+       "password": "${mongodb.pass}",
+       "source" : "admin"
+     },
      "server" : 
         { 
            "host" : "${mongodb.host}",
@@ -27,6 +33,12 @@
      "ssl" : false,
      "noCertValidation" : true,
      "database" : "data",
+     "credentials" : {
+       "mechanism": "PLAIN_MECHANISM", 
+       "userName" : "${mongodb.user}",
+       "password": "${mongodb.pass}",
+       "source" : "admin"
+     },
      "server" : 
         { 
            "host" : "${mongodb.host}",
