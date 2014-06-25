@@ -173,7 +173,7 @@
                     <defaultFilemode>744</defaultFilemode>
                     <defaultUsername>jboss</defaultUsername>
                     <defaultGroupname>jboss</defaultGroupname>
-                    <!-- 
+                    <!--
                     <requires>
                         <require>eap &gt;= 6.2</require>
                     </requires>
