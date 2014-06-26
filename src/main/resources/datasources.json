@@ -18,7 +18,8 @@
      "credentials" : {
        "mechanism": "PLAIN_MECHANISM", 
        "userName" : "${mongodb.user}",
-       "password": "${mongodb.pass}"
+       "password": "${mongodb.pass}",
+       "source" : "admin"
      },
      "server" : 
         { 
@@ -35,7 +36,8 @@
      "credentials" : {
        "mechanism": "PLAIN_MECHANISM", 
        "userName" : "${mongodb.user}",
-       "password": "${mongodb.pass}"
+       "password": "${mongodb.pass}",
+       "source" : "admin"
      },
      "server" : 
         { 
