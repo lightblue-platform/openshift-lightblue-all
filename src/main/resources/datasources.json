@@ -16,13 +16,13 @@
      "noCertValidation" : true,
      "database" : "metadata",
      "credentials" : {
-       "mechanism": "PLAIN_MECHANISM", 
+       "mechanism": "MONGODB_CR_MECHANISM",
        "userName" : "${mongodb.user}",
        "password": "${mongodb.pass}",
        "source" : "admin"
      },
-     "server" : 
-        { 
+     "server" :
+        {
            "host" : "${mongodb.host}",
            "port" : "${mongodb.port}"
         }
@@ -34,13 +34,13 @@
      "noCertValidation" : true,
      "database" : "data",
      "credentials" : {
-       "mechanism": "PLAIN_MECHANISM", 
+       "mechanism": "MONGODB_CR_MECHANISM",
        "userName" : "${mongodb.user}",
        "password": "${mongodb.pass}",
        "source" : "admin"
      },
-     "server" : 
-        { 
+     "server" :
+        {
            "host" : "${mongodb.host}",
            "port" : "${mongodb.port}"
         }
