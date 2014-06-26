@@ -78,10 +78,10 @@
 				<level name="ERROR" />
 			</logger>
 			<logger category="com.redhat">
-				<level name="DEBUG" />
+				<level name="INFO" />
 			</logger>
 			<root-logger>
-				<level name="DEBUG" />
+				<level name="INFO" />
 				<handlers>
 					<!--handler name="CONSOLE"/ -->
 					<handler name="FILE" />
