@@ -64,7 +64,7 @@ The openshift-lightblue-all source uses overlays with the maven war plugin, so p
 OPENSHIFT_LIGHTBLUE_APP_NAME=services
 OPENSHIFT_LIGHTBLUE_NAMESPACE=lightblue
 
-rhc deploy HEAD -a OPENSHIFT_LIGHTBLUE_APP_NAME -n OPENSHIFT_LIGHTBLUE_NAMESPACE
+rhc deploy HEAD -a $OPENSHIFT_LIGHTBLUE_APP_NAME -n $OPENSHIFT_LIGHTBLUE_NAMESPACE
 ```
 
 # Verification
