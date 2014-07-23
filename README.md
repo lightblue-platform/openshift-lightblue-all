@@ -3,7 +3,9 @@ openshift-lightblue-all
 
 All lightblue rest and web apps bundled into a single WAR for deployment on OpenShift.
 
-# App Setup
+# Setup
+
+## Create Application
 Create your application and add the mongo cartridge.  This can be done via the web console or on the command line with the `rhc` tool.  Steps with the cli:
 
 ```
@@ -21,8 +23,8 @@ rhc app create $OPENSHIFT_LIGHTBLUE_APP_NAME $CART_JBOSSEAP -n $OPENSHIFT_LIGHTB
 rhc cartridge add $CART_MONGODB -a $OPENSHIFT_LIGHTBLUE_APP_NAME -n $OPENSHIFT_LIGHTBLUE_NAMESPACE
 ```
 
-# Environment: No Jenkins
-To get the build working correctly you need to pass some properties to maven.  Run this script to set MAVEN_ARGS env variable on your existing application.  Change the local environment variables to match your app name and namespace.
+## Configure Environment
+To get the build working correctly you need to pass some properties to maven.  Run this script to set `MAVEN_ARGS` env variable on your existing application.  Change the local environment variables to match your app name and namespace.
 
 ```
 OPENSHIFT_LIGHTBLUE_APP_NAME=services
@@ -39,10 +41,7 @@ unset OPENSHIFT_MONGODB_DB_PASSWORD
 rhc env-show MAVEN_ARGS --namespace $OPENSHIFT_LIGHTBLUE_NAMESPACE --app $OPENSHIFT_LIGHTBLUE_APP_NAME
 ```
 
-# Environment: Jenkins
-TODO, but something similar to the "No Jenkins" option above where an env variable MAVEN_ARGS is setup.  Need to try it out to have it completely documented.
-
-# Initial Code Push
+## Deploy Code: Initial Push
 Simply force push the master branch from this repo into your app.
 
 ```
@@ -57,8 +56,32 @@ git reset --hard github/master
 git push origin master -f
 ```
 
-# Push updates
-The openshift-lightblue-all source uses overlays with the maven war plugin, so pushing updates is as simple as forcing a build.  Note that if it's dependent on snapshot versions the `MAVEN_ARGS` env variable set earlier should include `-U` for update snapshot dependencies.
+# Create Data
+There is sample metadata in this repository to create a `country` entity.
+All sections assume your current working directory is the root directory of the OpenShift application you created.
+
+## Create Metadata
+```
+OPENSHIFT_LIGHTBLUE_APP_NAME=services
+OPENSHIFT_LIGHTBLUE_NAMESPACE=lightblue
+
+BASE_REST_URL="http://${OPENSHIFT_LIGHTBLUE_APP_NAME}-${OPENSHIFT_LIGHTBLUE_NAMESPACE}.rhcloud.com/rest"
+
+curl -H Content-Type:application/json -X PUT ${BASE_REST_URL}/metadata/country/1.0.0 -d @src/main/data/country.json
+```
+
+## Create Data
+```
+OPENSHIFT_LIGHTBLUE_APP_NAME=services
+OPENSHIFT_LIGHTBLUE_NAMESPACE=lightblue
+
+BASE_REST_URL="http://${OPENSHIFT_LIGHTBLUE_APP_NAME}-${OPENSHIFT_LIGHTBLUE_NAMESPACE}.rhcloud.com/rest"
+
+curl -H Content-Type:application/json -X PUT ${BASE_REST_URL}/data/country/1.0.0 -d @src/main/data/country-data.json
+```
+
+# Update Application
+The openshift-lightblue-all source uses overlays with the maven war plugin, so pushing updates is as simple as forcing a build.  Note that if it's dependent on snapshot versions the `MAVEN_ARGS` env variable set earlier should include `-U` for update snapshot dependencies.  If you enable jenkins builds this is even easier by just forcing the jenkins job to build the app again.
 
 ```
 OPENSHIFT_LIGHTBLUE_APP_NAME=services
@@ -68,4 +91,4 @@ rhc deploy HEAD -a $OPENSHIFT_LIGHTBLUE_APP_NAME -n $OPENSHIFT_LIGHTBLUE_NAMESPA
 ```
 
 # Verification
-You can verify your deployment by simply running functional tests for lightblue against your newly deployed application!  See how [here](https://github.com/lightblue-platform/lightblue-tests#functional-tests).
+In addition to creating the sample entity data you can verify your deployment by running functional tests for lightblue against your newly deployed application!  See how [here](https://github.com/lightblue-platform/lightblue-tests#functional-tests).
