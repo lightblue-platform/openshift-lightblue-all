@@ -44,11 +44,16 @@ rhc env-show MAVEN_ARGS --namespace $OPENSHIFT_LIGHTBLUE_NAMESPACE --app $OPENSH
 ## Deploy Code: Initial Push
 Simply force push the master branch from this repo into your app.
 
+If you created your application via the web console you will need to check out the source locally before continuing:
 ```
 OPENSHIFT_LIGHTBLUE_APP_NAME=services
 OPENSHIFT_LIGHTBLUE_NAMESPACE=lightblue
 
 rhc git-clone --namespace $OPENSHIFT_LIGHTBLUE_NAMESPACE --app $OPENSHIFT_LIGHTBLUE_APP_NAME
+```
+
+Then fetch the latest from the openshift repo and push it up to your application:
+```
 cd $OPENSHIFT_LIGHTBLUE_APP_NAME
 git remote add github https://github.com/lightblue-platform/openshift-lightblue-all.git
 git fetch github
@@ -78,6 +83,22 @@ OPENSHIFT_LIGHTBLUE_NAMESPACE=lightblue
 BASE_REST_URL="http://${OPENSHIFT_LIGHTBLUE_APP_NAME}-${OPENSHIFT_LIGHTBLUE_NAMESPACE}.rhcloud.com/rest"
 
 curl -H Content-Type:application/json -X PUT ${BASE_REST_URL}/data/country/1.0.0 -d @src/main/data/country-data.json
+```
+
+## Verify Data
+The simple query API can be used to quickly verify the country data.
+
+```
+OPENSHIFT_LIGHTBLUE_APP_NAME=services
+OPENSHIFT_LIGHTBLUE_NAMESPACE=lightblue
+
+BASE_REST_URL="http://${OPENSHIFT_LIGHTBLUE_APP_NAME}-${OPENSHIFT_LIGHTBLUE_NAMESPACE}.rhcloud.com/rest"
+
+# verify US
+curl ${BASE_REST_URL}/data/find/country/1.0.0?Q=iso2Code:US
+
+# verify CA
+curl ${BASE_REST_URL}/data/find/country/1.0.0?Q=iso2Code:CA
 ```
 
 # Update Application
