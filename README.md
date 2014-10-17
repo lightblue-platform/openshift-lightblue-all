@@ -1,6 +1,5 @@
 
-Replaced with downloadable cart: [openshift-lightblue-cart](https://github.com/lightblue-platform/openshift-lightblue-cart
-0
+Replaced with downloadable cart: [openshift-lightblue-cart](https://github.com/lightblue-platform/openshift-lightblue-cart)
 
 openshift-lightblue-all
 =============
