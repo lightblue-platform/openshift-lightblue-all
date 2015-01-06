@@ -1,5 +1,5 @@
 {
-    "object_type": "country",
+    "objectType": "country",
     "version": "1.0.0",
     "projection": {
         "field": "_id"

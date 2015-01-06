@@ -4,7 +4,7 @@
     <groupId>com.redhat.lightblue</groupId>
     <artifactId>lightblue-all</artifactId>
     <packaging>war</packaging>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.9.1-SNAPSHOT</version>
     <name>lightblue-all</name>
     <repositories>
         <repository>
@@ -63,14 +63,14 @@
         <dependency>
             <groupId>com.redhat.lightblue.applications</groupId>
             <artifactId>apps-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.9.1-SNAPSHOT</version>
             <type>war</type>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.redhat.lightblue.applications</groupId>
             <artifactId>metadata-mgmt</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.9.1-SNAPSHOT</version>
             <type>war</type>
             <scope>compile</scope>
         </dependency>
@@ -78,28 +78,28 @@
         <dependency>
             <groupId>com.redhat.lightblue.rest</groupId>
             <artifactId>rest-metadata</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>0.9.1-SNAPSHOT</version>
             <classifier>classes</classifier>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.redhat.lightblue.rest</groupId>
             <artifactId>rest-metadata</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>0.9.1-SNAPSHOT</version>
             <type>war</type>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.redhat.lightblue.rest</groupId>
             <artifactId>rest-crud</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>0.9.1-SNAPSHOT</version>
             <classifier>classes</classifier>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.redhat.lightblue.rest</groupId>
             <artifactId>rest-crud</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>0.9.1-SNAPSHOT</version>
             <type>war</type>
             <scope>compile</scope>
         </dependency>

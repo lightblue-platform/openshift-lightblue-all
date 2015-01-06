@@ -1,3 +1,6 @@
+
+Replaced with downloadable cart: [openshift-lightblue-cart](https://github.com/lightblue-platform/openshift-lightblue-cart)
+
 openshift-lightblue-all
 =============
 
@@ -94,11 +97,20 @@ OPENSHIFT_LIGHTBLUE_NAMESPACE=lightblue
 
 BASE_REST_URL="http://${OPENSHIFT_LIGHTBLUE_APP_NAME}-${OPENSHIFT_LIGHTBLUE_NAMESPACE}.rhcloud.com/rest"
 
-# verify US
+# verify US (GET query)
 curl ${BASE_REST_URL}/data/find/country/1.0.0?Q=iso2Code:US
 
-# verify CA
+# verify CA (GET query)
 curl ${BASE_REST_URL}/data/find/country/1.0.0?Q=iso2Code:CA
+
+# verify US (POST query)
+curl -H Content-Type:application/json -X POST  -d '{
+  "objectType":"country",
+  "projection": { "field":"*","recursive":1},
+  "sort" : { "iso3Code":"$asc"},
+  "query":  { "field":"iso2Code", "op":"$eq", "rvalue":"US" },
+  "range" : [0,10]
+}' ${BASE_REST_URL}/data/find/country/1.0.0
 ```
 
 # Update Application
