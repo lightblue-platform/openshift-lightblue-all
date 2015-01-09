@@ -125,3 +125,8 @@ rhc deploy HEAD -a $OPENSHIFT_LIGHTBLUE_APP_NAME -n $OPENSHIFT_LIGHTBLUE_NAMESPA
 
 # Verification
 In addition to creating the sample entity data you can verify your deployment by running functional tests for lightblue against your newly deployed application!  See how [here](https://github.com/lightblue-platform/lightblue-tests#functional-tests).
+
+# License
+
+The license of lightblue is [GPLv3](https://www.gnu.org/licenses/gpl.html).  See LICENSE in root of project for the full text.
+
